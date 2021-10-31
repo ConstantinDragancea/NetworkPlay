@@ -1,0 +1,50 @@
+MesajOriginal = 13 caractere
+Hacked = 6 caractere
+Server a primit =  sa zicem 10 caractere
+
+
+client                                                           server
+MesajOriginal ----------------->                      MesajOriginalHacked
+Server a primit: MesajOriginalHacked <-------------- Server a primit: MesajOriginalHacked
+
+
+"MesajOriginal" se asteapta sa primeascsa ack = x + 13
+seq = x    ---------------------------->            seq = x
+ack = y        ------------------------>            ack = y
+
+
+serveru trimite inapoi "Server a primit:MesajOriginalHacked" se asteapta la ack = y + 10 + 13 + 6
+clientul o sa primeaesca "Server a primit: MesajOriginalHackedHacked" o sa trimita ack= y + 10 + 13 + 6 + 6
+seq = y <----------------------------------------   seq = y
+ack = x + 13 <-------------------------------      ack = x + 13 + 6
+
+"server a primit: MesajOriginalHackedHacked"
+clientul trimite iar : "MesajOriginal" si se asteapta sa priemasca + 13
+dar serveru primeste   "MesajOriginalHacked" si trimite inapoi + 13 + 6
+seq = x + 13 ------------------------------------> seq = x + 13 + 6
+ack = (y + 10 + 13 + 6 + 6) -------------------------->  ack = (y + 10 + 13 + 6)
+^
+mai trimite un "MesajOriginal"
+                              dar serveru primeste iar MesajOriginalHacked
+
+seq = (y + 10 + 13 + 6 + 6)  <----------------- seq = (y + 10 + 13 + 6)
+ack = (x + 13) + 13 <------------------------------------ ack = (x + 13 + 6) + 13 + 6
+
+
+
+seq ----------------------------------------> seq
+ack ---------------------------------------> ack
+1. --------
+mask[x + 13] = x + 13 + 6
+unmask[x + 13 + 6] = x + 13
+
+2.............
+mask[y + 10 + 13 + 6] = y + 10 + 13 + 6 + 6
+unmask[y + 10 + 13 + 6 + 6] = y + 10 + 13 + 6
+
+3. ---------------
+mask[(x + 13 + 6!!!!!) + 13] = (x + 13 + 6!!!!!!) + 13 + 6
+unmask[(x + 13) + 13 + 6]
+
+4............
+mask[(y + 10 + 13 + 6)

