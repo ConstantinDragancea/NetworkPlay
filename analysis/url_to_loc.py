@@ -48,9 +48,10 @@ def get_location_info(ip):
         'Accept': 'application/dns-json'
     }
     response = requests.get(IP2LOC_API + ip, headers=headers)
+    # response = requests.get(f"{IP2LOC}/{IP2LOC_KEY}/{ip}", headers=headers)
     parsed_response = json.loads(response.text)
 
-    # print(parsed_response)
+    print(parsed_response)
     oras = parsed_response['location']['city']
     regiune = parsed_response['location']['capital']
     tara = parsed_response['location']['country']['name']
@@ -120,5 +121,7 @@ if __name__ == "__main__":
     LoadIP2LOC_Key()
 
     ip_addr = GetIP(adresa)
+    print(f"IP: {ip_addr}")
+    print(f"location: {get_location_info(ip_addr)}")
 
     traceroute(ip_addr)
